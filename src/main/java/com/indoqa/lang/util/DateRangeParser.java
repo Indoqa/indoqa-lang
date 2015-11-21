@@ -21,7 +21,7 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.Map.Entry;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Parser that converts a string representation into a long offset and vice versa. The string may contain multiple parts (separated by

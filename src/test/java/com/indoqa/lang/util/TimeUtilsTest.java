@@ -17,7 +17,7 @@
 package com.indoqa.lang.util;
 
 import static junit.framework.Assert.assertEquals;
-import static org.apache.commons.lang.time.DateUtils.*;
+import static org.apache.commons.lang3.time.DateUtils.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,9 +28,6 @@ import java.util.Random;
 import java.util.TimeZone;
 
 import org.junit.Test;
-
-import com.indoqa.lang.util.DateRangeParser;
-import com.indoqa.lang.util.TimeUtils;
 
 import junit.framework.Assert;
 

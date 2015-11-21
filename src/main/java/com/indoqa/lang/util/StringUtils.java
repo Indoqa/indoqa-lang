@@ -131,7 +131,7 @@ public class StringUtils {
      * @throws IOException
      */
     public static int countLines(String content) {
-        if (org.apache.commons.lang.StringUtils.isEmpty(content)) {
+        if (org.apache.commons.lang3.StringUtils.isEmpty(content)) {
             return 0;
         }
 
@@ -182,7 +182,7 @@ public class StringUtils {
             }
 
             String stringValue = eachValue.toString();
-            if (org.apache.commons.lang.StringUtils.isBlank(stringValue)) {
+            if (org.apache.commons.lang3.StringUtils.isBlank(stringValue)) {
                 continue;
             }
 
@@ -217,7 +217,7 @@ public class StringUtils {
      * @throws IllegalArgumentException if the replacement string is <code>null</code>
      */
     public static String replaceControlCharactersWith(String text, String replacement) {
-        if (org.apache.commons.lang.StringUtils.isBlank(text)) {
+        if (org.apache.commons.lang3.StringUtils.isBlank(text)) {
             return "";
         }
 
@@ -231,7 +231,7 @@ public class StringUtils {
     }
 
     public static String sanitzeHtmlId(String id) {
-        if (org.apache.commons.lang.StringUtils.isBlank(id)) {
+        if (org.apache.commons.lang3.StringUtils.isBlank(id)) {
             return "";
         }
 

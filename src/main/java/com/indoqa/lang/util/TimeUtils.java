@@ -17,7 +17,7 @@
 package com.indoqa.lang.util;
 
 import static java.util.Calendar.*;
-import static org.apache.commons.lang.time.DateUtils.*;
+import static org.apache.commons.lang3.time.DateUtils.*;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
