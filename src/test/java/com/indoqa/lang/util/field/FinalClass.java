@@ -24,6 +24,7 @@ public class FinalClass extends ExtendedBaseClass {
     @TestAnnotation1
     private double value5;
 
+    @SuppressWarnings("unused")
     private int value6;
 
 }

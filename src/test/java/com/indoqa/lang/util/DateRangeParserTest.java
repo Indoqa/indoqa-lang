@@ -20,8 +20,6 @@ import java.text.ParseException;
 
 import org.junit.Test;
 
-import com.indoqa.lang.util.DateRangeParser;
-
 import junit.framework.Assert;
 
 public class DateRangeParserTest {
@@ -147,7 +145,7 @@ public class DateRangeParserTest {
     }
 
     @Test
-    public void testOutputCompound1() throws ParseException {
+    public void testOutputCompound1() {
         long offset = DateRangeParser.MILLISECONDS_PER_YEAR + DateRangeParser.MILLISECONDS_PER_WEEK * 2
             + DateRangeParser.MILLISECONDS_PER_DAY * 2 + DateRangeParser.MILLISECONDS_PER_HOUR * 3
             + DateRangeParser.MILLISECONDS_PER_MINUTE * 3;
@@ -156,7 +154,7 @@ public class DateRangeParserTest {
     }
 
     @Test
-    public void testOutputCompound2() throws ParseException {
+    public void testOutputCompound2() {
         long offset = DateRangeParser.MILLISECONDS_PER_YEAR + DateRangeParser.MILLISECONDS_PER_WEEK * 2
             + DateRangeParser.MILLISECONDS_PER_DAY * 2 + DateRangeParser.MILLISECONDS_PER_HOUR * 3
             + DateRangeParser.MILLISECONDS_PER_MINUTE * 3 + 6325;
@@ -165,37 +163,37 @@ public class DateRangeParserTest {
     }
 
     @Test
-    public void testOutputDay() throws ParseException {
+    public void testOutputDay() {
         String result = DateRangeParser.getStringRepresentationOfOffset(DateRangeParser.MILLISECONDS_PER_DAY * 5);
         Assert.assertEquals("5d", result);
     }
 
     @Test
-    public void testOutputHour() throws ParseException {
+    public void testOutputHour() {
         String result = DateRangeParser.getStringRepresentationOfOffset(DateRangeParser.MILLISECONDS_PER_HOUR * 2);
         Assert.assertEquals("2h", result);
     }
 
     @Test
-    public void testOutputMinute() throws ParseException {
+    public void testOutputMinute() {
         String result = DateRangeParser.getStringRepresentationOfOffset(DateRangeParser.MILLISECONDS_PER_MINUTE * 3);
         Assert.assertEquals("3m", result);
     }
 
     @Test
-    public void testOutputWeek() throws ParseException {
+    public void testOutputWeek() {
         String result = DateRangeParser.getStringRepresentationOfOffset(DateRangeParser.MILLISECONDS_PER_WEEK * 3);
         Assert.assertEquals("3w", result);
     }
 
     @Test
-    public void testOutputYear() throws ParseException {
+    public void testOutputYear() {
         String result = DateRangeParser.getStringRepresentationOfOffset(DateRangeParser.MILLISECONDS_PER_YEAR);
         Assert.assertEquals("1y", result);
     }
 
     @Test
-    public void testOutputYear2() throws ParseException {
+    public void testOutputYear2() {
         String result = DateRangeParser.getStringRepresentationOfOffset(DateRangeParser.MILLISECONDS_PER_YEAR * 4);
         Assert.assertEquals("4y", result);
     }
