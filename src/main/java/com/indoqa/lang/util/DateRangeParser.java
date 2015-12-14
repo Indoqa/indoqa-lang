@@ -18,30 +18,35 @@ package com.indoqa.lang.util;
 
 import java.text.MessageFormat;
 import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 
 /**
  * Parser that converts a string representation into a long offset and vice versa. The string may contain multiple parts (separated by
- * a blank), every part contains of an integer offset value and a time unit.<br/>
- * <br/>
+ * a blank), every part contains of an integer offset value and a time unit.<br>
+ * <br>
  * Supported units:
  * <ul>
- * <li>1y -> one year (365 days)</li>
- * <li>1w -> one week</li>
- * <li>1d -> one day</li>
- * <li>1h -> one hour</li>
- * <li>1m -> one month</li>
- * <li>1s -> one second</li>
- * <li>1ms -> one millisecond</li>
+ * <li>1y -&gt; one year (365 days)</li>
+ * <li>1w -&gt; one week</li>
+ * <li>1d -&gt; one day</li>
+ * <li>1h -&gt; one hour</li>
+ * <li>1m -&gt; one month</li>
+ * <li>1s -&gt; one second</li>
+ * <li>1ms -&gt; one millisecond</li>
  * </ul>
- * <br/>
+ * <br>
  * Examples:
  * <ul>
- * <li>"2y 3w" -> 2 years and 3 weeks</li>
- * <li>"4w 3d 5h 2m" -> 4 weeks, 3 days, 5 hours and 2 minutes</li>
+ * <li>"2y 3w" -&gt; 2 years and 3 weeks</li>
+ * <li>"4w 3d 5h 2m" -&gt; 4 weeks, 3 days, 5 hours and 2 minutes</li>
  * </ul>
  */
 public class DateRangeParser {

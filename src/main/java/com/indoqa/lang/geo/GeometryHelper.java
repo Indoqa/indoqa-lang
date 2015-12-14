@@ -37,10 +37,10 @@ public final class GeometryHelper {
      * Returns a simple 2D projection of the given geo coordinates.<br>
      * <br>
      * This will not try to correct for the curvature of the earth!
-     * 
+     *
      * @param lat The latitude
      * @param lon The longitude
-     * 
+     *
      * @return The Point2D containing 2D coordinates in meters.
      */
     public static Point2D getCoordinates2D(double lat, double lon) {
@@ -52,12 +52,12 @@ public final class GeometryHelper {
 
     /**
      * The distance in kilometers between two geo coordinates.
-     * 
+     *
      * @param lat1 Latitude of the first point.
      * @param lon1 Longitude of the first point.
      * @param lat2 Latitude of the second point.
      * @param lon2 Longitude of the first point.
-     * 
+     *
      * @return The distance between the two points in kilometer.
      */
     public static double getGeoDistance(double lat1, double lon1, double lat2, double lon2) {
@@ -66,7 +66,7 @@ public final class GeometryHelper {
         }
 
         double dist = Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2))
-            + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(lon1 - lon2));
+                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(lon1 - lon2));
         dist = Math.min(1, dist);
         dist = Math.acos(dist);
         dist = Math.toDegrees(dist);
@@ -77,6 +77,12 @@ public final class GeometryHelper {
 
     /**
      * Mercator projection of the given geo coordinates.
+     *
+     * @param lat The latitude
+     * @param lon The longitude
+     * @param lonCenter The y-axis is placed on this longitude for the projection
+     *
+     * @return The Point2D containing 2D coordinates in meters of the mercator projection.
      */
     public static Point2D getMercatorProjection(double lat, double lon, double lonCenter) {
         double x = Math.toRadians(lon) - Math.toRadians(lonCenter);
@@ -89,6 +95,14 @@ public final class GeometryHelper {
 
     /**
      * Squared distance between the given point and the line from <code>start</code> to <code>end</code>.<br>
+     *
+     * @param point The point
+     * @param startX The line start x coordinate
+     * @param startY The line start y coordinate
+     * @param endX The line end x coordinate
+     * @param endY The line end y coordinate
+     *
+     * @return The square of the distance between the point and the line of specified coordinates.
      */
     public static double getSquaredDistance(Point2D point, double startX, double startY, double endX, double endY) {
         double vectorX = endX - startX;
@@ -117,6 +131,12 @@ public final class GeometryHelper {
 
     /**
      * Squared distance between the given point and the line from <code>start</code> to <code>end</code>.<br>
+     *
+     * @param point The point
+     * @param start The line start point
+     * @param end The line end point
+     *
+     * @return The square of the distance between the point and the line of specified points.
      */
     public static double getSquaredDistance(Point2D point, Point2D start, Point2D end) {
         return getSquaredDistance(point, start.getX(), start.getY(), end.getX(), end.getY());

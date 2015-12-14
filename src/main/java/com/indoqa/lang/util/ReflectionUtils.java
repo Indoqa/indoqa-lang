@@ -27,12 +27,12 @@ public final class ReflectionUtils {
     }
 
     /**
-     * Returns all declared fields of the given <code>type</code>. <br/>
+     * Returns all declared fields of the given <code>type</code>. <br>
      * This method differs from {@link Class#getDeclaredFields()} in that it also returns all declared fields that are inherited.
-     * 
+     *
      * @param type The class to retrieve the declared fields for.
      * @return The declared fields of <code>type</code> and all its superclasses.
-     * 
+     *
      * @see Class#getDeclaredFields()
      */
     public static List<Field> getAllDeclaredFields(Class<?> type) {

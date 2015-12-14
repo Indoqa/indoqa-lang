@@ -29,7 +29,7 @@ public final class URLStringUtils {
 
     private static final String ALLOWED = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890-_.";
     private static final String[][] REPLACEMENTS = {{"\u00e4", "\u00f6", "\u00fc", "\u00df", " ", "\u00c4", "\u00d6", "\u00dc"},
-        {"ae", "oe", "ue", "ss", "-", "AE", "OU", "UE"}};
+            {"ae", "oe", "ue", "ss", "-", "AE", "OU", "UE"}};
 
     private URLStringUtils() {
         // hide utility class constructor
@@ -43,7 +43,7 @@ public final class URLStringUtils {
      * German umlauts and ß are replaced with their two-character representations (e.g. ae).
      * <p>
      * Multiple dashes are replaced by a single one.
-     * 
+     *
      * @param input The string to be cleaned
      * @return A String that only contains characters that don't need to be escaped if used as part of URLs.
      */
@@ -99,11 +99,11 @@ public final class URLStringUtils {
     }
 
     /**
-     * Calculate the &qout;relativizer&qout; of a path. E.g. <code>a/b/c</code> becomes <code>../../</code>. If a path doesn't start
-     * with a slash, one is prepended.
+     * Calculate the "relativizer" of a path. E.g. <code>a/b/c</code> becomes <code>../../</code>. If a path doesn't start with a
+     * slash, one is prepended.
      * <p>
      * The implementation is null-safe. Passing null as input returns null as result.
-     * 
+     *
      * @param path The path to be relativized.
      * @return The relativizer.
      */
@@ -148,10 +148,10 @@ public final class URLStringUtils {
      * <br>
      * This behaves exactly like <code>URLEncoder.encode(input, "UTF-8")</code> but also deals with the dreaded
      * {@link UnsupportedEncodingException} by converting it into an {@link IllegalStateException}
-     * 
+     *
      * @param input The input to URL encode
      * @return The encoded result.
-     * 
+     *
      * @throws IllegalStateException If UTF-8 is not supported.
      */
     public static String urlEncode(String input) {

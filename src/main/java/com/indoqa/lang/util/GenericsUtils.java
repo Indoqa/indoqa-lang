@@ -16,7 +16,11 @@
  */
 package com.indoqa.lang.util;
 
-import java.lang.reflect.*;
+import java.lang.reflect.GenericDeclaration;
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,17 +34,17 @@ public final class GenericsUtils {
     }
 
     /**
-     * Retrieve the type of a generic parameter of a class.<br/>
-     * <br/>
+     * Retrieve the type of a generic parameter of a class.<br>
+     * <br>
      * This method will traverse the class hierarchy of <code>type</code> upwards until it encounters <code>declaringClass</code> and
      * then return the actual type argument for the parameter type at <code>parameterIndex</code>.
-     * 
+     *
      * @param type The class to be analyzed
      * @param declaringClass The class/interface declaring the generic parameter to be retrieved.
      * @param parameterIndex The index of the generic parameter at <code>declaringClass</code> to be retrieved.
-     * 
+     *
      * @return The actual class bound to the generic parameter.
-     * 
+     *
      * @throws ReflectionException If <code>type</code> is not a subclass of <code>declaringClass</code> or if
      *             <code>declaringClass</code> does not define at least <code>parameterIndex</code> + 1 generic parameters.
      */
@@ -54,7 +58,7 @@ public final class GenericsUtils {
         Type[] actualTypes = parameterizedType.getActualTypeArguments();
         if (actualTypes.length <= parameterIndex) {
             throw new ReflectionException("Cannot retrieve parameter at index " + parameterIndex + ". " + declaringClass
-                + " defines only " + declaringClass.getTypeParameters().length + " parameters.");
+                    + " defines only " + declaringClass.getTypeParameters().length + " parameters.");
         }
 
         Type actualType = actualTypes[parameterIndex];
@@ -90,13 +94,13 @@ public final class GenericsUtils {
     /**
      * Retrieves the {@link ParameterizedType} that describes the parameter types bound to <code>declaringClass</code> in the type
      * hierarchy of <code>type</code>.
-     * 
+     *
      * @param type The class to be analyzed.
      * @param declaringClass The class/interface declaring generic parameters.
-     * 
+     *
      * @return The {@link ParameterizedType} requested or <code>null</code> if <code>declaringClass</code> does not define any generic
      *         parameters.
-     * 
+     *
      * @throws ReflectionException If <code>type</code> is not a subclass of <code>declaringClass</code>.
      */
     public static ParameterizedType getParameterizedType(Class<?> type, Class<?> declaringClass) {

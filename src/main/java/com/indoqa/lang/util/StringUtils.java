@@ -28,8 +28,11 @@ import java.util.regex.Pattern;
 import com.indoqa.lang.collection.ArrayIterable;
 
 /**
- * Utility functions that are not available in any of the popular StringUtils classes ( {@link org.apache.commons.lang.StringUtils},
- * {@link org.springframework.util.StringUtils}).
+ * Utility functions that are not available in any of the popular StringUtils classes. (
+ * <a href="https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/StringUtils.html">org.apache.
+ * commons.lang3.StringUtils</a>,
+ * <a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/util/StringUtils.html">org.springframework.util.
+ * StringUtils</a>)
  */
 public class StringUtils {
 
@@ -56,7 +59,7 @@ public class StringUtils {
     private static final Pattern CONTROL_CHARACTERS_PATTERN = Pattern.compile("[\\p{Cntrl}&&[^ \\t\\n\\r]]");
 
     private static final char[] CHARACTERS_TO_BE_ESCAPED_FOR_SOLR = {'"', '(', ')', ':', '[', ']', '+', '-', '*', '~', ' ', '^', '{',
-        '}', '!', '/'};
+            '}', '!', '/'};
 
     private static final char[] ILLEGAL_HTML_ID_CHARACTERS = {'"', '\'', ':', ';', ',', '+', 'ä', 'Ä', 'ö', 'Ö', 'ü', 'Ü', '&', '$'};
 
@@ -72,7 +75,7 @@ public class StringUtils {
      * <code>StringUtils</code> instances should NOT be constructed in standard programming. Instead, the class should be used as
      * <code>StringUtils.countLines("foo");</code>.
      * </p>
-     * 
+     *
      * <p>
      * This constructor is public to permit tools that require a JavaBean instance to operate.
      * </p>
@@ -102,7 +105,7 @@ public class StringUtils {
      * 1 decimal place for KiB ranges. <br>
      * <br>
      * The result will contain the appropriate binary unit (B, KiB, MiB or GiB)
-     * 
+     *
      * @param bytes The number of bytes to be formatted.
      * @return The formatted result.
      */
@@ -125,10 +128,9 @@ public class StringUtils {
     /**
      * Count the lines of the passed test. A line is considered to be terminated by any one of a line feed ('\n'), a carriage return
      * ('\r'), or a carriage return followed immediately by a linefeed.
-     * 
+     *
      * @param content The text whose lines are to be counted.
      * @return The number of lines.
-     * @throws IOException
      */
     public static int countLines(String content) {
         if (org.apache.commons.lang3.StringUtils.isEmpty(content)) {
@@ -210,7 +212,7 @@ public class StringUtils {
 
     /**
      * Replaces control characters defined in CONTROL_CHARACTERS_PATTERN with the replacement string.
-     * 
+     *
      * @param text The text whose control characters are to be replaced.
      * @param replacement The text the control characters should be replaced with
      * @return The String with the replaced control characters or empty String if text is null or empty.

@@ -16,8 +16,14 @@
  */
 package com.indoqa.lang.util;
 
-import static java.util.Calendar.*;
-import static org.apache.commons.lang3.time.DateUtils.*;
+import static java.util.Calendar.HOUR_OF_DAY;
+import static java.util.Calendar.MILLISECOND;
+import static java.util.Calendar.MINUTE;
+import static java.util.Calendar.SECOND;
+import static org.apache.commons.lang3.time.DateUtils.MILLIS_PER_DAY;
+import static org.apache.commons.lang3.time.DateUtils.MILLIS_PER_HOUR;
+import static org.apache.commons.lang3.time.DateUtils.MILLIS_PER_MINUTE;
+import static org.apache.commons.lang3.time.DateUtils.MILLIS_PER_SECOND;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -47,7 +53,7 @@ public final class TimeUtils {
     /**
      * Converts a relative date offset described as milliseconds in a string representation like '1y 3w 2d 4h' using the
      * {@link DateRangeParser}
-     * 
+     *
      * @param offset The offset in milliseconds
      * @return A human readaby string representation
      */
@@ -57,10 +63,10 @@ public final class TimeUtils {
 
     /**
      * Converts a string representation like '1y 3w 2d 4h' into a long offset, using the {@link DateRangeParser}.
-     * 
+     *
      * @param textualRepresentation A string representation of a relative time offset, see {@link DateRangeParser} for details.
      * @return The relative long offset for the string representation.
-     * @throws ParseException
+     * @throws ParseException If textualRepresentation is either empty or null.
      */
     public static long convertRelativeStringOffsetToMilliseconds(String textualRepresentation) throws ParseException {
         return DateRangeParser.getOffsetInMilliseconds(textualRepresentation);
@@ -69,8 +75,11 @@ public final class TimeUtils {
     /**
      * Format a {@link Date} to contain both date and time information with full millisecond precision. The time zone used is always
      * UTC.
-     * 
+     *
      * The result returned by this method is fully compatible with {@link #parseDate(String)}.
+     *
+     * @param date The date to be formatted.
+     * @return The formatted date.
      */
     public static String formatDate(Date date) {
         return createDateFormat().format(date);
@@ -78,10 +87,10 @@ public final class TimeUtils {
 
     /**
      * Convenience method for {@link #formatDuration(long)}
-     * 
+     *
      * @param start Start date for the duration
      * @param end End date for the duration
-     * 
+     *
      * @return A human readable representation of the duration
      * @throws IllegalArgumentException If either start or end date is null
      */
@@ -100,7 +109,7 @@ public final class TimeUtils {
     /**
      * Formats a duration in milliseconds to contain the following information days (d), hours (h), minutes (m), seconds (s),
      * milliseconds (ms). Only the biggest unit (following the next unit if it's not empty) will be printed.
-     * 
+     *
      * @param durationInMillis Duration in milliseconds to be formatted
      * @return A human readable representation of the duration
      */
@@ -134,14 +143,14 @@ public final class TimeUtils {
      * Formats the given amount of time to represent seconds and milliseconds.<br>
      * <br>
      * The result's format will be <code>#,##0.000</code>.
-     * 
+     *
      * @param amount The amount of time expressed in <code>timeUnit</code>.
      * @param timeUnit The unit of <code>amount</code>
-     * 
+     *
      * @return The formatted result.
-     * 
+     *
      * @see DecimalFormat
-     * @See {@link TimeUnit}
+     * @see TimeUnit
      */
     public static String formatSecondsAndMilliseconds(long amount, TimeUnit timeUnit) {
         double milliseconds = timeUnit.toMillis(amount);
@@ -188,8 +197,11 @@ public final class TimeUtils {
     /**
      * Parse a date expression with both date and time information with full millisecond precision and create a {@link Date}. The
      * assumed time zone is always UTC.
-     * 
+     *
      * This method accepts date expressions generated with {@link #formatDate(Date)}.
+     *
+     * @param value the date expression to be parsed.
+     * @return The parsed date.
      */
     public static Date parseDate(String value) {
         try {

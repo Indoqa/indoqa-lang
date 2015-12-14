@@ -40,11 +40,12 @@ public final class CollectionUtils {
     }
 
     /**
-     * Returns up to <code>maxCount</code> elements from the beginning of <code>items</code>.<br/>
-     * If <code>items</code> contains less than or exactly <code>maxCount</code> elements this method returns <code>items</code>.<br/>
-     * <br/>
+     * Returns up to <code>maxCount</code> elements from the beginning of <code>items</code>.<br>
+     * If <code>items</code> contains less than or exactly <code>maxCount</code> elements this method returns <code>items</code>.<br>
+     * <br>
      * This returned list will NOT be independent from <code>items</code>! See {@link List#subList(int, int)}.
      *
+     * @param <T> the class of the objects in the list
      * @param items The list to retrieve up to <code>maxCount</code> elements from.
      * @param maxCount The maximum number of elements to retrieve.
      * @return The list of elements.
