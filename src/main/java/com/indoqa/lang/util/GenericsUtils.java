@@ -25,8 +25,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.indoqa.lang.exception.IndoqaException;
-
 public final class GenericsUtils {
 
     private GenericsUtils() {
@@ -216,7 +214,7 @@ public final class GenericsUtils {
         return result;
     }
 
-    public static class ReflectionException extends IndoqaException {
+    public static class ReflectionException extends RuntimeException {
 
         private static final long serialVersionUID = 1L;
 
