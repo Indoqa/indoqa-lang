@@ -76,7 +76,7 @@ public class EnumUtilsTest {
         Mercedes("Mercedes", Color.RED);
 
         private static final Function<String, Cars> NAME_LOOKUP_FN = lookupEnum(Cars.class, e -> e.getName());
-        private static final Function<Object, Collection<Cars>> COLOR_LOOKUP_FN = lookupEnums(Cars.class, e -> e.getColor());
+        private static final Function<Color, Collection<Cars>> COLOR_LOOKUP_FN = lookupEnums(Cars.class, e -> e.getColor());
 
         private final String name;
         private final Color color;
