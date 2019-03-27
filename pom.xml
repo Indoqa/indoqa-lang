@@ -26,7 +26,7 @@
   </parent>  
 
   <artifactId>indoqa-lang</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1-SNAPSHOT</version>
   <name>Indoqa Lang</name>
 
   <url>https://github.com/Indoqa/indoqa-lang</url>
@@ -36,7 +36,7 @@
     <connection>scm:git:git@github.com:Indoqa/indoqa-lang.git</connection>
     <developerConnection>scm:git:git@github.com:Indoqa/indoqa-lang.git</developerConnection>
     <url>https://github.com/Indoqa/indoqa-lang</url>
-    <tag>indoqa-lang-1.1.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <properties>
