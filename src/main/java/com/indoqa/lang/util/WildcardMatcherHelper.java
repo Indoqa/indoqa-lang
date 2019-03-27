@@ -21,26 +21,34 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- * This class is a utility class that performs wildcard-patterns matching and isolation. <br/>
- * 
- * @see http://svn.apache.org/repos/asf/cocoon/cocoon3/trunk/cocoon-util/src/main/java/org/apache/cocoon/util/wildcard/
- *      WildcardMatcherHelper.java
+ * This class is a utility class that performs wildcard-patterns matching and isolation.
+ *
+ * @see "http://svn.apache.org/repos/asf/cocoon/cocoon3/trunk/cocoon-util/src/main/java/org/apache/cocoon/util/wildcard/
+ * WildcardMatcherHelper.java"
  */
 public final class WildcardMatcherHelper {
     // ~ Static fields/initializers -----------------------------------------------------------------
 
-    /** Default path separator: "/" */
+    /**
+     * Default path separator: "/"
+     */
     public static final char ESC = '\\';
 
-    /** Default path separator: "/" */
+    /**
+     * Default path separator: "/"
+     */
     public static final char PATHSEP = '/';
 
-    /** Default path separator: "/" */
+    /**
+     * Default path separator: "/"
+     */
     public static final char STAR = '*';
 
     // ~ Methods ------------------------------------------------------------------------------------
 
-    /** Cache for compiled pattern matchers */
+    /**
+     * Cache for compiled pattern matchers
+     */
     private static final Map<String, Matcher> CACHE = new HashMap<>();
 
     private WildcardMatcherHelper() {
@@ -62,18 +70,17 @@ public final class WildcardMatcherHelper {
      * The '**' wildcard is greedy and thus the following sample matches as {"foo/bar","baz","bug"}:
      * <dl>
      * <dt>pattern</dt>
-     * <dd>&#42;&#42;/&#42;/&#42;&#42;</dt>
+     * <dd>&#42;&#42;/&#42;/&#42;&#42;</dd>
      * <dt>string</dt>
-     * <dd>foo/bar/baz/bug</dt>
+     * <dd>foo/bar/baz/bug</dd>
      * </dl>
      * The first '**' in the pattern will suck up as much as possible without making the match fail.
      *
      * @param pat The pattern string.
      * @param str The string to match against the pattern
-     *
      * @return a <code>Map</code> containing the representation of the extracted pattern. The extracted patterns are keys in the
-     *         <code>Map</code> from left to right beginning with "1" for the left most, "2" for the next, a.s.o. The key "0" is the
-     *         string itself. If the return value is null, string does not match to the pattern.
+     * <code>Map</code> from left to right beginning with "1" for the left most, "2" for the next, a.s.o. The key "0" is the
+     * string itself. If the return value is null, string does not match to the pattern.
      */
     public static Map<String, String> match(final String pat, final String str) {
         Matcher matcher;
@@ -159,8 +166,17 @@ public final class WildcardMatcherHelper {
      */
     private static class Matcher {
 
-        /** Regexp to split constant parts from front and back leaving wildcards in the middle. */
+        /**
+         * Regexp to split constant parts from front and back leaving wildcards in the middle.
+         */
         private static final Pattern splitter;
+        /**
+         * Wildcard types to short-cut simple '*' and "**' matches.
+         */
+        private static final int WC_CONST = 0;
+        private static final int WC_STAR = 1;
+        private static final int WC_STARSTAR = 2;
+        private static final int WC_REGEXP = 3;
 
         static {
             final String fixedRE = "([^*\\\\]*)";
@@ -169,29 +185,33 @@ public final class WildcardMatcherHelper {
             splitter = Pattern.compile(splitRE);
         }
 
-        /** Wildcard types to short-cut simple '*' and "**' matches. */
-        private static final int WC_CONST = 0;
-        private static final int WC_STAR = 1;
-        private static final int WC_STARSTAR = 2;
-        private static final int WC_REGEXP = 3;
-
         // ~ Instance fields ------------------------------------------------------------------------
 
         // All fields declared final to emphasize requirement to be thread-safe.
 
-        /** Fixed text at start of pattern. */
+        /**
+         * Fixed text at start of pattern.
+         */
         private final String prefix;
 
-        /** Fixed text at end of pattern. */
+        /**
+         * Fixed text at end of pattern.
+         */
         private final String suffix;
 
-        /** Length of prefix and suffix. */
+        /**
+         * Length of prefix and suffix.
+         */
         private final int fixlen;
 
-        /** Wildcard type of pattern. */
+        /**
+         * Wildcard type of pattern.
+         */
         private final int wctype;
 
-        /** Compiled regexp equivalent to wildcard pattern between prefix and suffix. */
+        /**
+         * Compiled regexp equivalent to wildcard pattern between prefix and suffix.
+         */
         private final Pattern regexp;
 
         // ~ Constructors ---------------------------------------------------------------------------
@@ -217,7 +237,8 @@ public final class WildcardMatcherHelper {
                 if (tail.length() != 0 && wildcard.charAt(wildcard.length() - 1) == ESC) {
                     wildcard = wildcard + tail.substring(0, 1);
                     this.suffix = tail.substring(1);
-                } else {
+                }
+                else {
                     this.suffix = tail;
                 }
 
@@ -226,14 +247,17 @@ public final class WildcardMatcherHelper {
                 if (wildcard.equals("*")) {
                     this.wctype = WC_STAR;
                     this.regexp = null;
-                } else if (wildcard.equals("**")) {
+                }
+                else if (wildcard.equals("**")) {
                     this.wctype = WC_STARSTAR;
                     this.regexp = null;
-                } else {
+                }
+                else {
                     this.wctype = WC_REGEXP;
                     this.regexp = compileRegexp(wildcard);
                 }
-            } else {
+            }
+            else {
                 // Pattern is a constant without '*' or '\'.
                 this.prefix = pat;
                 this.suffix = "";
